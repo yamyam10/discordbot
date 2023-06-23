@@ -1,6 +1,4 @@
-import discord
-import random
-import asyncio
+from imports import *
 
 async def team(interaction,role):
     # ユーザーに応答を返す前に、処理が実行中であることを示す

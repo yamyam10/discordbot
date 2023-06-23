@@ -1,5 +1,4 @@
-import discord
-import random
+from imports import *
 
 clr = [
     0xfa3d2a,

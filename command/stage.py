@@ -1,5 +1,4 @@
-import discord
-import random
+from imports import *
 
 def get_file_stage():
     stage = random.randint(0, 16) #0~16

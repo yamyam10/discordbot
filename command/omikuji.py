@@ -1,5 +1,4 @@
-import discord
-import random
+from imports import *
 
 OMIKUJI_RESULTS = [
     (0.0, 0.0, "大凶", 0.05),
