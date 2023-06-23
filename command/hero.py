@@ -39,7 +39,8 @@ clr = [
     0x132832,
     0x00956d,
     0xf75096,
-    0xa239b7
+    0xa239b7,
+    0xA597E2
     ]
 
 clr_crb = [
@@ -75,7 +76,9 @@ clr_crb = [
     0xb2af9a,
     0x5db0cf,
     0xffc155,
-    0x8e95a6
+    0x8e95a6,
+    0x5177A2,
+    0xBFCAF7
     ]
 
 hero = [
@@ -116,7 +119,8 @@ hero = [
     "Bugdoll",
     "ステリア・ララ・シルワ",
     "ラヴィ・シュシュマルシュ",
-    "アル・ダハブ=アルカティア"
+    "アル・ダハブ=アルカティア",
+    "天空王 ぶれいずどらごん"
 ]
 
 hero_crb = [
@@ -152,12 +156,14 @@ hero_crb = [
     "2B",
     "リムル=テンペスト",
     "御坂 美琴",
-    "アクセラレータ"
+    "アクセラレータ",
+    "ベル・クラネル",
+    "ロキシー・ミグルディア"
 ]
 
 file2 = random.choice(hero+hero_crb)
 
-def get_embed(file2):
+def get_embed_hero(file2):
     if file2==hero[0]:
         embed = discord.Embed(title="",color=clr[0])
         embed.set_author(
@@ -386,6 +392,12 @@ def get_embed(file2):
         name=file2,
         icon_url="https://cdn.discordapp.com/attachments/688378324342669333/1079602677928960010/D6E27199-0E19-4637-A1D7-90B9A95FA24D.jpg"
         )
+    elif file2==hero[38] :
+        embed = discord.Embed(title="",color=clr[38])
+        embed.set_author(
+        name=file2,
+        icon_url="https://cdn.discordapp.com/attachments/688378324342669333/1121659070395461703/0C97927B-6B91-41A8-AAB5-2810CE7DA9B2.jpg"
+        )
     elif file2==hero_crb[0] :
         embed = discord.Embed(title="",color=clr_crb[0])
         embed.set_author(
@@ -583,6 +595,18 @@ def get_embed(file2):
         embed.set_author(
         name=file2,
         icon_url="https://cdn.discordapp.com/attachments/688378324342669333/1081099102613418004/3762CDA0-E252-4726-BC79-90903CCEB20E.jpg"
+        )
+    elif file2==hero_crb[33] :
+        embed = discord.Embed(title="",color=clr_crb[33])
+        embed.set_author(
+        name=file2,
+        icon_url="https://cdn.discordapp.com/attachments/688378324342669333/1121661538831446066/F10806AC-75BA-4B47-B4B7-B1B76B4075C7.jpg"
+        )
+    elif file2==hero_crb[34] :
+        embed = discord.Embed(title="",color=clr_crb[34])
+        embed.set_author(
+        name=file2,
+        icon_url="https://cdn.discordapp.com/attachments/688378324342669333/1121661547157139467/D6E33CE6-FF8C-4BA7-9B48-95B93EACBC4D.jpg"
         )
     # await interacion.response.send_message(embed=embed)
     return embed

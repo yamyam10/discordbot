@@ -5,7 +5,8 @@ import asyncio
 import openai
 import config
 import command.hero 
-from command.hero import get_embed
+from command.hero import get_embed_hero
+from command.stage import get_file_stage
 
 TOKEN = config.cps_TOKEN # カスタム大会bot
 # TOKEN = config.kani_TOKEN # 🦀bot
@@ -106,83 +107,13 @@ async def ヒーロー(interacion: discord.Interaction):
     file2 = random.choice(hero+hero_crb)
     print(file2)
 
-    embed = get_embed(file2)
+    embed = get_embed_hero(file2)
     await interacion.response.send_message(embed=embed)
 
 @bot.tree.command(name="ステージ",description="ランダムでステージを表示")
 async def ステージ(interacion: discord.Interaction):
-    stage = random.randint(0, 16) #0~16
-    if stage == 0: #0が出たとき
-        stageimg="stage1.jpg"
-        file = discord.File(fp="stage/stage1.jpg",filename=stageimg,spoiler=False)
-        await interacion.response.send_message(file=file)
-    elif stage == 1: #1が出たとき
-        stageimg="stage2.jpg"
-        file = discord.File(fp="stage/stage2.jpg",filename=stageimg,spoiler=False)
-        await interacion.response.send_message(file=file)
-    elif stage == 2: #2が出たとき
-        stageimg="stage3.jpg"
-        file = discord.File(fp="stage/stage3.jpg",filename=stageimg,spoiler=False)
-        await interacion.response.send_message(file=file)
-    elif stage == 3: #3が出たとき
-        stageimg="stage4.jpg"
-        file = discord.File(fp="stage/stage4.jpg",filename=stageimg,spoiler=False)
-        await interacion.response.send_message(file=file)    
-    elif stage == 4: #4が出たとき
-        stageimg="stage5.jpg"
-        file = discord.File(fp="stage/stage5.jpg",filename=stageimg,spoiler=False)
-        await interacion.response.send_message(file=file)
-    elif stage == 5: #5が出たとき
-        stageimg="stage6.jpg"
-        file = discord.File(fp="stage/stage6.jpg",filename=stageimg,spoiler=False)
-        await interacion.response.send_message(file=file)
-    elif stage == 6: #6が出たとき
-        stageimg="stage7.jpg"
-        file = discord.File(fp="stage/stage7.jpg",filename=stageimg,spoiler=False)
-        await interacion.response.send_message(file=file)
-    elif stage == 7: #1が出たとき
-        stageimg="stage8.jpg"
-        file = discord.File(fp="stage/stage8.jpg",filename=stageimg,spoiler=False)
-        await interacion.response.send_message(file=file)
-    elif stage == 8: #1が出たとき
-        stageimg="stage9.jpg"
-        file = discord.File(fp="stage/stage9.jpg",filename=stageimg,spoiler=False)
-        await interacion.response.send_message(file=file)    
-    elif stage == 9: #1が出たとき
-        stageimg="stage10.jpg"
-        file = discord.File(fp="stage/stage10.jpg",filename=stageimg,spoiler=False)
-        await interacion.response.send_message(file=file)    
-    elif stage == 10: #1が出たとき
-        stageimg="stage11.jpg"
-        file = discord.File(fp="stage/stage11.jpg",filename=stageimg,spoiler=False)
-        await interacion.response.send_message(file=file)    
-    elif stage == 11: #1が出たとき
-        stageimg="stage12.jpg"
-        file = discord.File(fp="stage/stage12.jpg",filename=stageimg,spoiler=False)
-        await interacion.response.send_message(file=file)    
-    elif stage == 12: #1が出たとき
-        stageimg="stage13.jpg"
-        file = discord.File(fp="stage/stage13.jpg",filename=stageimg,spoiler=False)
-        await interacion.response.send_message(file=file)  
-    elif stage == 13: #1が出たとき
-        stageimg="stage14.jpg"
-        file = discord.File(fp="stage/stage14.jpg",filename=stageimg,spoiler=False)
-        await interacion.response.send_message(file=file)    
-    elif stage == 14: #1が出たとき
-        stageimg="stage15.jpg"
-        file = discord.File(fp="stage/stage15.jpg",filename=stageimg,spoiler=False)
-        await interacion.response.send_message(file=file)    
-    elif stage == 15: #1が出たとき
-        stageimg="stage16.jpg"
-        file = discord.File(fp="stage/stage16.jpg",filename=stageimg,spoiler=False)
-        await interacion.response.send_message(file=file)    
-    elif stage == 16: #1が出たとき
-        stageimg="stage17.jpg"
-        file = discord.File(fp="stage/stage17.jpg",filename=stageimg,spoiler=False)
-        await interacion.response.send_message(file=file)    
-    else: #それ以外なのでERRORが出た時に処理される
-        embed = discord.Embed(title="ERROR🦀",color=discord.Colour.purple())
-        await interacion.response.send_message(embed=embed)
+    file = get_file_stage()
+    await interacion.response.send_message(file=file)
 
 @bot.tree.command(name="ロール削除", description="全てのチームロールを一括で削除")
 async def ロール削除(interaction: discord.Interaction):
