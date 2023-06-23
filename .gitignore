@@ -4,3 +4,4 @@ config.py
 
 # ディレクトリ配下（のすべてのパスを）除外する
 /__pycache__
+/command/__pycache__
