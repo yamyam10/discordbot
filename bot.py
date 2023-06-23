@@ -8,6 +8,7 @@ from command.hero import get_embed_hero
 from command.stage import get_file_stage
 from command.omikuji import omikuji
 from command.team import team
+from command.role_del import role_del
 
 TOKEN = config.cps_TOKEN # カスタム大会bot
 # TOKEN = config.kani_TOKEN # 🦀bot
@@ -65,24 +66,8 @@ async def ステージ(interacion: discord.Interaction):
 
 @bot.tree.command(name="ロール削除", description="全てのチームロールを一括で削除")
 async def ロール削除(interaction: discord.Interaction):
-
-    # 管理者ロールがない場合は無視
-    if not discord.utils.get(interaction.user.roles, name="管理者"):
-        embed = discord.Embed(title='このコマンドは管理者のみが実行できます。', color=discord.Colour.purple())
-        await interaction.response.send_message(embed=embed)
-        return
-
-    guild = bot.get_guild(interaction.guild_id)
-    team_roles = ['チームA', 'チームB', 'チームC', 'チームD', 'チームE', 'チームF']
-
-    for member in guild.members:
-        for role in member.roles:
-            if role.name in team_roles:
-                await member.remove_roles(role)
-
-    embed = discord.Embed(title='全てのチームロールを一括で削除しました。', color=discord.Colour.purple())
+    embed = await role_del(interaction)
     await interaction.response.send_message(embed=embed)
-    await interaction.response.edit_message(embed=embed)
 
 アタッカー = 2
 ガンナー = 2
