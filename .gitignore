@@ -1,4 +1,4 @@
 #githubにあげたくないファイルを書く
 
 config.py
-config.cpython-311.pyc
+__pycache__/
