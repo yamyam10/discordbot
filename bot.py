@@ -7,6 +7,7 @@ import config
 import command.hero 
 from command.hero import get_embed_hero
 from command.stage import get_file_stage
+from command.omikuji import omikuji
 
 TOKEN = config.cps_TOKEN # カスタム大会bot
 # TOKEN = config.kani_TOKEN # 🦀bot
@@ -37,31 +38,10 @@ async def help(interacion: discord.Interaction):
     embed.add_field(name="",value="`/使用 アタッカー, ガンナー, スプリンター, タンク：`指定したロールの回数を減らせる",inline=False)
     await interacion.response.send_message(embed=embed)
 
-OMIKUJI_RESULTS = [
-    (0.0, 0.0, "大凶", 0.05),
-    (1.0, 199.0, "吉", 0.2),
-    (200.0, 399.0, "中吉", 0.3),
-    (400.0, 499.0, "小吉", 0.15),
-    (500.0, 979.0, "末吉", 0.25),
-    (980.0, 999.9, "大吉", 0.1),
-]
-
 @bot.tree.command(name="おみくじ", description="運勢を占ってくれるよ。")
 async def おみくじ(interaction: discord.Interaction):
-    result = random.uniform(0, 1)
-    cumulative_probability = 0.0
-
-    for omikuji_range in OMIKUJI_RESULTS:
-        start, end, title, probability = omikuji_range
-        cumulative_probability += probability
-        if result < cumulative_probability:
-            embed = discord.Embed(title=title, color=discord.Colour.purple())
-            await interaction.response.send_message(embed=discord.Embed(title=f'{interaction.user.mention} さんの運勢は「{title}」です！', color=discord.Colour.purple()))
-            return
-    else:
-        # 範囲外の場合はエラーメッセージを送信する
-        embed = discord.Embed(title="ERROR", color=discord.Colour.purple())
-        await interaction.response.send_message(embed=embed)
+    embed = await omikuji(interaction)
+    await interaction.response.send_message(embed=embed)
 
 @bot.tree.command(name="チーム分け", description="チーム分けをしてくれるよ。")
 async def チーム分け(interaction: discord.Interaction, role: discord.Role):
