@@ -3,4 +3,4 @@
 config.py
 
 # ディレクトリ配下（のすべてのパスを）除外する
-__pycache__/
+/__pycache__
