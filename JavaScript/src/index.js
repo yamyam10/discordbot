@@ -1,25 +1,15 @@
-require('dotenv').config();
-const {token} = process.env;
-const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({
-	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages],
+const { Client, Events, GatewayIntentBits } = require('discord.js');
+
+// 設定ファイルからトークン情報を呼び出し、変数に保存します
+const { token } = require('../config.json');
+
+// クライアントインスタンスと呼ばれるオブジェクトを作成します
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+
+// クライアントオブジェクトが準備OKとなったとき一度だけ実行されます
+client.once(Events.ClientReady, c => {
+	console.log(`ログインしました ${c.user.tag}`);
 });
 
-//起動確認
-client.once('ready', () => {
-    console.log(`${client.user.tag} Ready`);
-});
-
-//返答
-client.on('messageCreate', message => {
-    if (message.author.bot) {
-        return;
-    }
-
-    if (message.content == 'hi') {
-        message.channel.send('hi!');
-    }
-});
-
-//Discordへの接続
+// ログインします
 client.login(token);
