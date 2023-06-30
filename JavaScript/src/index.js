@@ -1,15 +1,33 @@
+const heyFile = require('../commands/hey.js');
+
 const { Client, Events, GatewayIntentBits } = require('discord.js');
-
-// 設定ファイルからトークン情報を呼び出し、変数に保存します
 const { token } = require('../config.json');
-
-// クライアントインスタンスと呼ばれるオブジェクトを作成します
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-// クライアントオブジェクトが準備OKとなったとき一度だけ実行されます
 client.once(Events.ClientReady, c => {
 	console.log(`ログインしました ${c.user.tag}`);
 });
+
+client.on(Events.InteractionCreate, async interaction => {
+
+    if (!interaction.isChatInputCommand()) return;
+
+    if (interaction.commandName === heyFile.data.name) {
+        try {
+            await heyFile.execute(interaction);
+        } catch (error) {
+            console.error(error);
+            if (interaction.replied || interaction.deferred) {
+                await interaction.followUp({ content: 'コマンド実行時にエラーになりました。', ephemeral: true });
+            } else {
+                await interaction.reply({ content: 'コマンド実行時にエラーになりました。', ephemeral: true });
+            }
+        }
+    } else {
+        console.error(`${interaction.commandName}というコマンドには対応していません。`);
+    }
+});
+
 
 // ログインします
 client.login(token);
