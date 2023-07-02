@@ -19,7 +19,7 @@ async def on_ready():
     # メッセージを送信
     if target_channel:
         now = datetime.datetime.now()
-        login_message = f"ログインしました {bot.user}\n日付: {now.strftime('%Y年%m月%d日')}\n時間: {now.strftime('%H:%M:%S')}"
+        login_message = f"{bot.user}\n{now.strftime('%Y年%m月%d日')}{now.strftime('%H:%M:%S')} ログインしました"
         await target_channel.send(login_message)
     else:
         print("指定されたチャンネルが見つかりません。")
