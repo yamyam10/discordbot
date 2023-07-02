@@ -9,7 +9,22 @@ bot.remove_command("help")
 @bot.event
 async def on_ready():
     print(f'ログインしました {bot.user}')
-    #スラッシュコマンド同期
+
+    # ログインメッセージを送信するチャンネルID
+    target_channel_id = 1125038838335672352
+
+    # メッセージを送信するチャンネルを取得
+    target_channel = bot.get_channel(target_channel_id)
+
+    # メッセージを送信
+    if target_channel:
+        now = datetime.datetime.now()
+        login_message = f"ログインしました {bot.user}\n日付: {now.strftime('%Y年%m月%d日')}\n時間: {now.strftime('%H:%M:%S')}"
+        await target_channel.send(login_message)
+    else:
+        print("指定されたチャンネルが見つかりません。")
+
+    # スラッシュコマンド同期
     try:
         synced = await bot.tree.sync()
         print(f"{len(synced)}個のコマンドを同期しました。")
