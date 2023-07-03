@@ -1,7 +1,7 @@
 from imports import *
 
-TOKEN = config.cps_TOKEN # カスタム大会bot
-# TOKEN = config.kani_TOKEN # 🦀bot
+# TOKEN = config.cps_TOKEN # カスタム大会bot
+TOKEN = config.kani_TOKEN # 🦀bot
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 bot.remove_command("help")
@@ -11,7 +11,8 @@ async def on_ready():
     print(f'ログインしました {bot.user}')
 
     # ログインメッセージを送信するチャンネルID
-    target_channel_id = 1125038838335672352
+    # target_channel_id = 1125038838335672352
+    target_channel_id = 1125252464501862440
 
     # メッセージを送信するチャンネルを取得
     target_channel = bot.get_channel(target_channel_id)

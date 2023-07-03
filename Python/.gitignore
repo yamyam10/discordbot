@@ -1,7 +1,7 @@
 #githubにあげたくないファイルを書く
 
 config.py
-
+data.json
 # ディレクトリ配下（のすべてのパスを）除外する
 /__pycache__
 /command/__pycache__
