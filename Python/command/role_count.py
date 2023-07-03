@@ -1,7 +1,7 @@
 from imports import *
 import json
 
-data_file = "data.json"
+data_file = "python/data.json"
 
 def load_data():
     try:
