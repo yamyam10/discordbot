@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('embed')
+		.setName('embed2')
 		.setDescription('botがembedを返事します'),
 	execute: async function(interaction) {
 		await interaction.reply({
