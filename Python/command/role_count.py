@@ -18,7 +18,7 @@ def save_data(data):
 data = load_data()
 
 def get_attacker_value_for_user(user_id):
-    data = load_data()  # 追加
+    data = load_data()
     if str(user_id) in data:
         return data[user_id].get("アタッカー", 2)
     else:
@@ -27,7 +27,7 @@ def get_attacker_value_for_user(user_id):
         return data[user_id]["アタッカー"]
 
 def get_gunner_value_for_user(user_id):
-    data = load_data()  # 追加
+    data = load_data()
     if str(user_id) in data:
         return data[user_id].get("ガンナー", 2)
     else:
@@ -36,7 +36,7 @@ def get_gunner_value_for_user(user_id):
         return data[user_id]["ガンナー"]
 
 def get_sprinter_value_for_user(user_id):
-    data = load_data()  # 追加
+    data = load_data()
     if str(user_id) in data:
         return data[user_id].get("スプリンター", 2)
     else:
@@ -45,7 +45,7 @@ def get_sprinter_value_for_user(user_id):
         return data[user_id]["スプリンター"]
 
 def get_tank_value_for_user(user_id):
-    data = load_data()  # 追加
+    data = load_data()
     if str(user_id) in data:
         return data[user_id].get("タンク", 2)
     else:
