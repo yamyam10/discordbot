@@ -10,12 +10,8 @@ bot.remove_command("help")
 async def on_ready():
     print(f'ログインしました {bot.user}')
 
-    # ログインメッセージを送信するチャンネルID
-    # target_channel_id = 1125038838335672352
-    target_channel_id = 1125252464501862440
-
     # メッセージを送信するチャンネルを取得
-    target_channel = bot.get_channel(target_channel_id)
+    target_channel = bot.get_channel(config.kani_channel_id)
 
     # メッセージを送信
     if target_channel:
